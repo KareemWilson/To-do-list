@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TO-DO-List</title>
+    <script
+      src="https://kit.fontawesome.com/7e86c8c237.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
-<script defer src="main.js"></script></head>
-<body>
+  <script defer src="main.js"></script></head>
+  <body>
     <div class="container">
-        <h1 class="task">hello from</h1>
+      <h1 class="title">My Demo TO-DO</h1>
+      <hr class="border" />
+      <div class="input-field">
+        <input type="text" class="add-task" placeholder="Add to your list..." />
+        <button class="add">--></button>
+      </div>
+      <hr class="border" />
+      <div class="tasks-list"></div>
+      <a href="#" class="clear">Clear all completed</a>
     </div>
-</body>
+  </body>
 </html>
