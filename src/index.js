@@ -14,8 +14,8 @@ const renderTasks = (arr) => {
     const tasksHTML = arr.map(
       (task) => `<div class='task'>
               <div class='task-checkbox'>
-                <input onChange="changeTaskStatus(${task.id})" class="checkbox" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''}/>
-                <label for='task-one' class='label'>${task.description}</label>
+                <input onChange="changeTaskStatus(${task.id}, this)" class="checkbox" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''}/>
+                <label for='task-one' class='label ${task.completed ? 'completed' : ''}'>${task.description}</label>
               </div>
               <i class="fa-solid fa-trash delete" onclick="removeTask(${task.id})"></i>
             </div>
@@ -29,8 +29,14 @@ const renderTasks = (arr) => {
 };
 
 const saveAndRender = (arr) => {
+  if (arr.length > 0) {
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].id = i;
+    }
+  }
   localStorage.setItem('list', JSON.stringify(arr));
   renderTasks(arr);
+  console.log(arr);
 };
 
 renderTasks(tasksArr);
@@ -38,11 +44,6 @@ renderTasks(tasksArr);
 window.removeTask = (_id) => {
   const updatedList = tasksArr.filter((task) => task.id !== _id);
   tasksArr = updatedList;
-  if (tasksArr.length > 0) {
-    for (let i = 0; i < tasksArr.length; i += 1) {
-      tasksArr[i].id = i;
-    };
-  }
   saveAndRender(tasksArr);
 };
 
@@ -64,9 +65,15 @@ addBtn.addEventListener('click', () => {
   }
 });
 
-window.changeTaskStatus = (id) => {
-  console.log(id);
+window.changeTaskStatus = (id, task) => {
+  console.log(document.getElementById(id).nextElementSibling);
   tasksArr[id].completed = !tasksArr[id].completed;
   console.log("the array after updating status: ", tasksArr);
+  saveAndRender(tasksArr);
+};
+
+window.clearAllCompleted = () => {
+  const updatedTasks = tasksArr.filter((elem) => !elem.completed);
+  tasksArr = updatedTasks;
   saveAndRender(tasksArr);
 };
