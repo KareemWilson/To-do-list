@@ -29,6 +29,10 @@ body {
   margin: 0;
 }
 
+.delete {
+  cursor: pointer;
+}
+
 .clear {
   padding: 15px;
   text-align: center;
