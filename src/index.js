@@ -41,7 +41,6 @@ const saveAndRender = (arr) => {
   }
   localStorage.setItem('list', JSON.stringify(arr));
   renderTasks(arr);
-  console.log(arr);
 };
 
 renderTasks(tasksArr);
@@ -91,14 +90,12 @@ const toggleDisplay = (elemGroup1, elemGroup2) => {
 };
 
 window.editTask = (id) => {
-  console.log(document.querySelector(`[data-id="${id}"]`));
   const normalDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.normal-display');
   const editDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.edit-display');
   toggleDisplay(normalDisplay, editDisplay);
 };
 
 window.updateDescription = (id, element) => {
-  console.log(element.value);
   tasksArr[id].description = element.value;
   saveAndRender(tasksArr);
 };

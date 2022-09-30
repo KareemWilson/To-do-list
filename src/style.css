@@ -21,6 +21,14 @@ body {
   flex: 5;
 }
 
+.fa-solid {
+  font-size: 25px;
+}
+
+.add {
+  font-size: 38px;
+}
+
 .border {
   color: grey;
   height: 0;
@@ -77,3 +85,8 @@ i {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  body {
+    margin: 5% 4%;
+  }
+}
