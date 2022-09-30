@@ -4,7 +4,8 @@ const renderTasks = (arr) => {
   if (arr.length !== 0) {
     const tasksHTML = arr.map(
       (task) => `<div class='task' data-id="${task.id}">
-                    <div class='task-checkbox updated'><input class="checkbox normal-display" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''}/>
+                    <div class='task-checkbox updated'>
+                    <input class="checkbox normal-display" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''} onChange="changeTaskStatus(${task.id}, this)"/>
                     <label for='task-one' class='label ${task.completed ? 'completed' : ''} normal-display'>${task.description}</label>
                     <input class="add-task edit-display d-none" type='input' id=${task.id} value=${task.description} onchange="updateDescription(${task.id}, this)"/>
                 </div>
