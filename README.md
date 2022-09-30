@@ -16,10 +16,13 @@
 
 ## Getting Started
 
-**clone this repo and go live with this awesome application.**
+**To get a local copy up and running follow these simple example steps.**
 
+- Step 0: Clone this repo ...
+- Step 1: (run npm i) to install webpack and other dependancies  ...
+- Step 2: (npm run start), this command starts the webpack dev server ...
+- step 3: Enjoy... 
 
-To get a local copy up and running follow these simple example steps.
 
 ## Authors
 
