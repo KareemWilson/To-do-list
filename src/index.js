@@ -35,3 +35,14 @@ window.updateDescription = (id, element) => {
   tasksArr[id].description = element.value;
   saveAndRender(tasksArr);
 };
+
+window.clearAllCompleted = () => {
+  const updatedTasks = tasksArr.filter((elem) => !elem.completed);
+  tasksArr = updatedTasks;
+  saveAndRender(tasksArr);
+};
+
+window.changeTaskStatus = (id) => {
+  tasksArr[id].completed = !tasksArr[id].completed;
+  saveAndRender(tasksArr);
+};
