@@ -45,13 +45,10 @@ body {
   padding: 15px;
   text-align: center;
   background-color: #f3f0eb;
-  padding: 15px;
-    text-align: center;
-    background-color: #f3f0eb;
-    text-decoration: underline;
-    font-size: 23px;
-    font-weight: 600;
-    cursor: pointer;
+  text-decoration: underline;
+  font-size: 23px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .input-field {
@@ -67,7 +64,7 @@ body {
   align-items: center;
 }
 
-.completed { 
+.completed {
   text-decoration: line-through;
   color: grey;
 }
