@@ -1,43 +1,37 @@
 import './style.css';
+import { addBtn, input } from './modules/Constants.js';
+import { renderTasks, saveAndRender } from './modules/renderTasks.js';
+import { toggleDisplay, createTask } from './modules/utils.js';
 
-const tasks = document.querySelector('.tasks-list');
-// const addBtn = document.querySelector('.add');
-// const input = document.querySelector('.add-task');
+let tasksArr = [];
+if (localStorage.length > 0) {
+  tasksArr = JSON.parse(localStorage.getItem('list'));
+}
 
-const tasksArr = [
-  {
-    index: 1,
-    description: 'this is task #1',
-    completed: true,
-  },
-  {
-    index: 2,
-    description: 'this is task #2',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'this is task #3',
-    completed: false,
-  },
-];
+renderTasks(tasksArr);
 
-const renderTasks = () => {
-  if (tasksArr.length !== 0) {
-    const tasksHTML = tasksArr.map(
-      (task) => `<div class='task'>
-              <div class='task-checkbox'>
-                <input type='checkbox' id='task-one' ${task.completed ? 'checked' : ''}/>
-                <label for='task-one' class='label'>${task.description}</label>
-              </div>
-              <a href='' class='options'>
-                <i class='fa-solid fa-circle-chevron-down'></i>
-              </a>
-            </div>
-            <hr class='border' />`,
-    );
-    tasks.innerHTML = tasksHTML.join('');
-  }
+window.removeTask = (_id) => {
+  const updatedList = tasksArr.filter((task) => task.id !== _id);
+  tasksArr = updatedList;
+  saveAndRender(tasksArr);
 };
 
-renderTasks();
+addBtn.addEventListener('click', () => {
+  if (input.value !== '') {
+    const taskObj = createTask(input.value, tasksArr.length);
+    tasksArr.push(taskObj);
+    saveAndRender(tasksArr);
+    input.value = '';
+  }
+});
+
+window.editTask = (id) => {
+  const normalDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.normal-display');
+  const editDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.edit-display');
+  toggleDisplay(normalDisplay, editDisplay);
+};
+
+window.updateDescription = (id, element) => {
+  tasksArr[id].description = element.value;
+  saveAndRender(tasksArr);
+};

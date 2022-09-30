@@ -21,6 +21,14 @@ body {
   flex: 5;
 }
 
+.fa-solid {
+  font-size: 25px;
+}
+
+.add {
+  font-size: 38px;
+}
+
 .border {
   color: grey;
   height: 0;
@@ -29,10 +37,18 @@ body {
   margin: 0;
 }
 
+.delete {
+  cursor: pointer;
+}
+
 .clear {
   padding: 15px;
   text-align: center;
   background-color: #f3f0eb;
+  text-decoration: underline;
+  font-size: 23px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .input-field {
@@ -46,4 +62,28 @@ body {
   margin: 0 8px;
   height: 52px;
   align-items: center;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-none {
+  display: none;
+}
+
+i {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 5% 4%;
+  }
 }
