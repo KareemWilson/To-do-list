@@ -63,3 +63,17 @@ body {
   text-decoration: line-through;
   color: grey;
 }
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-none {
+  display: none;
+}
+
+i {
+  cursor: pointer;
+}
+

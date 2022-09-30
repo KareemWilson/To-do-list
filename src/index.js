@@ -12,12 +12,17 @@ if (localStorage.length > 0) {
 const renderTasks = (arr) => {
   if (arr.length !== 0) {
     const tasksHTML = arr.map(
-      (task) => `<div class='task'>
-              <div class='task-checkbox'>
-                <input onChange="changeTaskStatus(${task.id}, this)" class="checkbox" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''}/>
-                <label for='task-one' class='label ${task.completed ? 'completed' : ''}'>${task.description}</label>
+      (task) => `<div class='task' data-id="${task.id}">
+              <div class='task-checkbox updated'>
+                <input onChange="changeTaskStatus(${task.id}, this)" class="checkbox normal-display" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''}/>
+                <label for='task-one' class='label ${task.completed ? 'completed' : ''} normal-display'>${task.description}</label>
+                <input class="add-task edit-display d-none" type='input' id=${task.id} value=${task.description} onchange="updateDescription(${task.id}, this)"/>
               </div>
-              <i class="fa-solid fa-trash delete" onclick="removeTask(${task.id})"></i>
+              <div class="options">
+                <i class="fa-solid fa-circle-check edit-display d-none" onclick="editTask(${task.id})"></i>
+                <i class="fa-solid fa-pen-to-square normal-display" onclick="editTask(${task.id})"></i>
+                <i class="fa-solid fa-trash delete" onclick="removeTask(${task.id})"></i>
+              </div>
             </div>
             <hr class='border' />`,
     );
@@ -53,7 +58,7 @@ const createTask = (task) => {
     description: task,
     completed: false,
     id: index,
-  }
+  };
 };
 
 addBtn.addEventListener('click', () => {
@@ -65,15 +70,35 @@ addBtn.addEventListener('click', () => {
   }
 });
 
-window.changeTaskStatus = (id, task) => {
-  console.log(document.getElementById(id).nextElementSibling);
+window.changeTaskStatus = (id) => {
   tasksArr[id].completed = !tasksArr[id].completed;
-  console.log("the array after updating status: ", tasksArr);
   saveAndRender(tasksArr);
 };
 
 window.clearAllCompleted = () => {
   const updatedTasks = tasksArr.filter((elem) => !elem.completed);
   tasksArr = updatedTasks;
+  saveAndRender(tasksArr);
+};
+
+const toggleDisplay = (elemGroup1, elemGroup2) => {
+  elemGroup1.forEach((elem) => {
+    elem.classList.toggle('d-none');
+  });
+  elemGroup2.forEach((elem) => {
+    elem.classList.toggle('d-none');
+  });
+};
+
+window.editTask = (id) => {
+  console.log(document.querySelector(`[data-id="${id}"]`));
+  const normalDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.normal-display');
+  const editDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.edit-display');
+  toggleDisplay(normalDisplay, editDisplay);
+};
+
+window.updateDescription = (id, element) => {
+  console.log(element.value);
+  tasksArr[id].description = element.value;
   saveAndRender(tasksArr);
 };
