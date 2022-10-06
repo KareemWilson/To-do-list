@@ -13,7 +13,10 @@ window.tasksArr = tasksArray;
 
 renderTasks(window.tasksArr);
 
-addBtn.addEventListener('click', () => addTask(input.value, window.tasksArr));
+addBtn.addEventListener('click', () => {
+  addTask(input.value, window.tasksArr);
+  input.value = '';
+});
 
 window.removeTask = (id, arr) => removeTask(id, arr);
 
@@ -21,4 +24,4 @@ window.updateDescription = (id, element, arr) => updateDescription(id, element, 
 
 window.clearAllCompleted = () => clearAllCompleted();
 
-window.changeTaskStatus = (id) => changeTaskStatus(id);
+window.changeTaskStatus = (id, arr) => changeTaskStatus(id, arr);
