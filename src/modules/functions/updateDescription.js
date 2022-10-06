@@ -1,8 +1,8 @@
 import { saveAndRender } from './renderTasks.js';
 
-const updateDescription = (id, element) => {
-  window.tasksArr[id].description = element.value;
-  saveAndRender(window.tasksArr);
+const updateDescription = (id, updated, arr) => {
+  arr[id].description = updated.value || updated;
+  saveAndRender(arr);
 };
 
 export default updateDescription;

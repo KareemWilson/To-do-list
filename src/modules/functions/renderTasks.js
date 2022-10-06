@@ -7,7 +7,7 @@ const renderTasks = (arr) => {
                     <div class='task-checkbox updated'>
                     <input class="checkbox normal-display" type='checkbox' id=${task.id} ${task.completed ? 'checked' : ''} onChange="changeTaskStatus(${task.id}, this)"/>
                     <label for='task-one' class='label ${task.completed ? 'completed' : ''} normal-display'>${task.description}</label>
-                    <input class="add-task edit-display d-none" type='input' id=${task.id} value=${task.description} onchange="updateDescription(${task.id}, this)"/>
+                    <input class="add-task edit-display d-none" type='input' id=${task.id} value=${task.description} onchange="updateDescription(${task.id}, this, window.tasksArr)"/>
                 </div>
                 <div class="options">
                     <i class="fa-solid fa-circle-check edit-display d-none" onclick="editTask(${task.id})"></i>

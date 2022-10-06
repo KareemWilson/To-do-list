@@ -1,5 +1,6 @@
 import removeTask from './functions/removeTask.js';
 import addTask from './functions/addTask.js';
+import updateDescription from './functions/updateDescription.js';
 
 jest.mocked('./functions/addTask.js');
 
@@ -15,9 +16,9 @@ document.body.innerHTML = ` <div class='container'>
 <a class='clear' onclick='clearAllCompleted()'>Clear all completed</a>
 </div>`;
 
-describe('check Functionality', () => {
-  const arr = [];
-  const tasks = document.querySelector('.tasks-list');
+const arr = [];
+const tasks = document.querySelector('.tasks-list');
+describe('check Functionality(add & remove)', () => {
   test('should add task from array', () => {
     addTask('This is the first task ', arr);
     addTask('This is the second task', arr);
@@ -26,5 +27,12 @@ describe('check Functionality', () => {
   test('should remove task from array', () => {
     removeTask(1, arr);
     expect(tasks.childElementCount).toBe(2);
+  });
+});
+
+describe('check functionality (Edit & ChangeCompleteStatus & ClearAllCompletedTasks)', () => {
+  test('Edit Task', () => {
+    updateDescription(0, 'edited', arr);
+    expect(arr[0].description).toBe('edited');
   });
 });

@@ -17,7 +17,7 @@ addBtn.addEventListener('click', () => addTask(input.value, window.tasksArr));
 
 window.removeTask = (id, arr) => removeTask(id, arr);
 
-window.updateDescription = (id, element) => updateDescription(id, element);
+window.updateDescription = (id, element, arr) => updateDescription(id, element, arr);
 
 window.clearAllCompleted = () => clearAllCompleted();
 
