@@ -1,48 +1,23 @@
 import './style.css';
 import { addBtn, input } from './modules/Constants.js';
-import { renderTasks, saveAndRender } from './modules/renderTasks.js';
-import { toggleDisplay, createTask } from './modules/utils.js';
+import { renderTasks } from './modules/functions/renderTasks.js';
+import addTask from './modules/functions/addTask.js';
+import './modules/functions/ChangeDOM.js';
+import removeTask from './modules/functions/removeTask.js';
+import updateDescription from './modules/functions/updateDescription.js';
+import clearAllCompleted from './modules/functions/clearAllCompleted.js';
+import changeTaskStatus from './modules/functions/changeTaskStatus.js';
 
-let tasksArr = [];
-if (localStorage.length > 0) {
-  tasksArr = JSON.parse(localStorage.getItem('list'));
-}
+window.tasksArr = localStorage.length > 0 ? JSON.parse(localStorage.getItem('list')) : [];
 
-renderTasks(tasksArr);
+renderTasks(window.tasksArr);
 
-window.removeTask = (_id) => {
-  const updatedList = tasksArr.filter((task) => task.id !== _id);
-  tasksArr = updatedList;
-  saveAndRender(tasksArr);
-};
+addBtn.addEventListener('click', () => addTask(input.value, window.tasksArr));
 
-addBtn.addEventListener('click', () => {
-  if (input.value !== '') {
-    const taskObj = createTask(input.value, tasksArr.length);
-    tasksArr.push(taskObj);
-    saveAndRender(tasksArr);
-    input.value = '';
-  }
-});
+window.removeTask = (_id) => removeTask(_id);
 
-window.editTask = (id) => {
-  const normalDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.normal-display');
-  const editDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.edit-display');
-  toggleDisplay(normalDisplay, editDisplay);
-};
+window.updateDescription = (id, element) => updateDescription(id, element);
 
-window.updateDescription = (id, element) => {
-  tasksArr[id].description = element.value;
-  saveAndRender(tasksArr);
-};
+window.clearAllCompleted = () => clearAllCompleted();
 
-window.clearAllCompleted = () => {
-  const updatedTasks = tasksArr.filter((elem) => !elem.completed);
-  tasksArr = updatedTasks;
-  saveAndRender(tasksArr);
-};
-
-window.changeTaskStatus = (id) => {
-  tasksArr[id].completed = !tasksArr[id].completed;
-  saveAndRender(tasksArr);
-};
+window.changeTaskStatus = (id) => changeTaskStatus(id);
