@@ -1,4 +1,4 @@
-import { tasks } from './Constants.js';
+import { tasks } from '../Constants.js';
 
 const renderTasks = (arr) => {
   if (arr.length !== 0) {

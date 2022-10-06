@@ -1,4 +1,4 @@
-import { input } from './Constants.js';
+import { input } from '../Constants.js';
 import { saveAndRender } from './renderTasks.js';
 
 const createTask = (task, index) => {
