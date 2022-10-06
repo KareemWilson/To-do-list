@@ -1,8 +1,8 @@
 import './style.css';
 import { addBtn, input } from './modules/Constants.js';
 import { renderTasks, saveAndRender } from './modules/renderTasks.js';
-import { toggleDisplay } from './modules/utils.js';
 import addTask from './modules/addTask.js';
+import './modules/ChangeDOM.js';
 
 let tasksArr = [];
 if (localStorage.length > 0) {
@@ -16,12 +16,6 @@ window.removeTask = (_id) => {
   const updatedList = tasksArr.filter((task) => task.id !== _id);
   tasksArr = updatedList;
   saveAndRender(tasksArr);
-};
-
-window.editTask = (id) => {
-  const normalDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.normal-display');
-  const editDisplay = document.querySelector(`[data-id="${id}"]`).querySelectorAll('.edit-display');
-  toggleDisplay(normalDisplay, editDisplay);
 };
 
 window.updateDescription = (id, element) => {
