@@ -15,7 +15,7 @@ renderTasks(window.tasksArr);
 
 addBtn.addEventListener('click', () => addTask(input.value, window.tasksArr));
 
-window.removeTask = (_id, tasksArray) => removeTask(_id, tasksArray);
+window.removeTask = (id, arr) => removeTask(id, arr);
 
 window.updateDescription = (id, element) => updateDescription(id, element);
 

@@ -12,7 +12,7 @@ const renderTasks = (arr) => {
                 <div class="options">
                     <i class="fa-solid fa-circle-check edit-display d-none" onclick="editTask(${task.id})"></i>
                     <i class="fa-solid fa-pen-to-square normal-display" onclick="editTask(${task.id})"></i>
-                    <i class="fa-solid fa-trash delete" onclick="removeTask(${task.id})"></i>
+                    <i class="fa-solid fa-trash delete" onclick="removeTask(${task.id},window.tasksArr)"></i>
                 </div>
               </div>
               <hr class='border' />`,
