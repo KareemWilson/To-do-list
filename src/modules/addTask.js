@@ -1,6 +1,14 @@
 import { input } from './Constants.js';
 import { saveAndRender } from './renderTasks.js';
-import { createTask } from './utils.js';
+
+const createTask = (task, index) => {
+  const id = index;
+  return {
+    description: task,
+    completed: false,
+    id,
+  };
+};
 
 const addTask = (value, arr) => {
   if (value !== '') {

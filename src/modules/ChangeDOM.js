@@ -1,4 +1,11 @@
-import { toggleDisplay } from './utils.js';
+const toggleDisplay = (elemGroup1, elemGroup2) => {
+  elemGroup1.forEach((elem) => {
+    elem.classList.toggle('d-none');
+  });
+  elemGroup2.forEach((elem) => {
+    elem.classList.toggle('d-none');
+  });
+};
 
 window.editTask = (id) => {
   const normalDisplay = document
