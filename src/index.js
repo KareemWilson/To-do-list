@@ -1,7 +1,7 @@
 import './style.css';
-import './modules/functions/ChangeDOM.js';
 import { addBtn, input } from './modules/Constants.js';
 import { renderTasks } from './modules/functions/renderTasks.js';
+import './modules/functions/ChangeDOM.js';
 import addTask from './modules/functions/addTask.js';
 import removeTask from './modules/functions/removeTask.js';
 import updateDescription from './modules/functions/updateDescription.js';
