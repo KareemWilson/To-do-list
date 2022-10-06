@@ -17,7 +17,7 @@ const renderTasks = (arr) => {
               </div>
               <hr class='border' />`,
     );
-    tasks.innerHTML = tasksHTML.join('');
+    document.querySelector('.tasks-list').innerHTML = tasksHTML.join('');
   }
   if (arr.length === 0) {
     tasks.innerHTML = '';
