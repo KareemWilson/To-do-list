@@ -8,13 +8,14 @@ import updateDescription from './modules/functions/updateDescription.js';
 import clearAllCompleted from './modules/functions/clearAllCompleted.js';
 import changeTaskStatus from './modules/functions/changeTaskStatus.js';
 
-window.tasksArr = localStorage.length > 0 ? JSON.parse(localStorage.getItem('list')) : [];
+const tasksArray = localStorage.length > 0 ? JSON.parse(localStorage.getItem('list')) : [];
+window.tasksArr = tasksArray;
 
 renderTasks(window.tasksArr);
 
 addBtn.addEventListener('click', () => addTask(input.value, window.tasksArr));
 
-window.removeTask = (_id) => removeTask(_id);
+window.removeTask = (_id, tasksArray) => removeTask(_id, tasksArray);
 
 window.updateDescription = (id, element) => updateDescription(id, element);
 

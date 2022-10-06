@@ -16,11 +16,15 @@ document.body.innerHTML = ` <div class='container'>
 </div>`;
 
 describe('check Functionality', () => {
+  const arr = [];
+  const tasks = document.querySelector('.tasks-list');
   test('should add task from array', () => {
-    const arr = [];
-    const tasks = document.querySelector('.tasks-list');
     addTask('This is the first task ', arr);
     addTask('This is the second task', arr);
     expect(tasks.childElementCount).toBe(4);
+  });
+  test('should remove task from array', () => {
+    removeTask(1, arr);
+    expect(tasks.childElementCount).toBe(2);
   });
 });
