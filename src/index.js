@@ -1,8 +1,8 @@
 import './style.css';
+import './modules/functions/ChangeDOM.js';
 import { addBtn, input } from './modules/Constants.js';
 import { renderTasks } from './modules/functions/renderTasks.js';
 import addTask from './modules/functions/addTask.js';
-import './modules/functions/ChangeDOM.js';
 import removeTask from './modules/functions/removeTask.js';
 import updateDescription from './modules/functions/updateDescription.js';
 import clearAllCompleted from './modules/functions/clearAllCompleted.js';
