@@ -1,4 +1,4 @@
-import { input } from '../Constants.js';
+// import { input } from '../Constants.js';
 import { saveAndRender } from './renderTasks.js';
 
 const createTask = (task, index) => {
@@ -10,12 +10,12 @@ const createTask = (task, index) => {
   };
 };
 
-const addTask = (value, arr) => {
-  if (value !== '') {
-    const taskObj = createTask(value, arr.length);
+const addTask = (val, arr) => {
+  if (val !== '') {
+    const taskObj = createTask(val, arr.length);
     arr.push(taskObj);
     saveAndRender(arr);
-    input.value = '';
+    // input.value = '';
   }
 };
 
