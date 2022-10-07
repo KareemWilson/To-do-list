@@ -22,6 +22,6 @@ window.removeTask = (id, arr) => removeTask(id, arr);
 
 window.updateDescription = (id, element, arr) => updateDescription(id, element, arr);
 
-window.clearAllCompleted = () => clearAllCompleted();
+window.clearAllCompleted = (arr) => clearAllCompleted(arr);
 
 window.changeTaskStatus = (id, arr) => changeTaskStatus(id, arr);
