@@ -2,6 +2,7 @@ import removeTask from './functions/removeTask.js';
 import addTask from './functions/addTask.js';
 import updateDescription from './functions/updateDescription.js';
 import changeTaskStatus from './functions/changeTaskStatus.js';
+import clearAllCompleted from './functions/clearAllCompleted.js';
 
 jest.mocked('./functions/addTask.js');
 
@@ -39,5 +40,10 @@ describe('check functionality (Edit & ChangeCompleteStatus & ClearAllCompletedTa
   test('updateStatus', () => {
     changeTaskStatus(1, arr);
     expect(arr[1].completed).toBe(true);
+  });
+  test('Clear All Completed', () => {
+    clearAllCompleted(arr);
+    const updatedArray = arr.filter((elem) => !elem.completed);
+    expect(updatedArray.length).toEqual(1);
   });
 });

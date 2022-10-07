@@ -1,6 +1,7 @@
 import { tasks } from '../Constants.js';
 
 const renderTasks = (arr) => {
+  console.log('this is in the render task function', arr);
   if (arr.length !== 0) {
     const tasksHTML = arr.map(
       (task) => `<div class='task' data-id="${task.id}">
@@ -30,6 +31,7 @@ const saveAndRender = (arr) => {
       arr[i].id = i;
     }
   }
+  console.log('this is in the save and render function', arr);
   localStorage.setItem('list', JSON.stringify(arr));
   renderTasks(arr);
 };
