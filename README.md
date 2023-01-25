@@ -30,7 +30,7 @@
 
 # 📖 ToDo List<a name="about-project"></a>
 
-**ToDo List**
+**a project which you can add and save your daily tasks and remove it easily.**
 
 ## 🛠 Built With <a name="built-with"></a>
 
